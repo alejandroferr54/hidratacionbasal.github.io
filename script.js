@@ -3,7 +3,7 @@
 // MA == Mantenimiento x Medio mantenimiento (cc*1.5)
 
 
-
+//    Parte basada en la clase
 
 const CALCULAR = document.getElementById('calcular');
 const ERROR = document.getElementById('error');
@@ -19,12 +19,13 @@ CALCULAR.addEventListener('click', () => {
     if (DATO > 0){
         ERROR.style.display = 'none';
         const flujo = calculeHidrate(DATO);
+        // Codigo propio, agregando datos usando el método de superficie corporal
         if (DATO > 30) {
             //console.log(DATO)
             //console.log(`${flujo} EL FLUJO`)
             let valor1 = flujo * 1500
             let mantenimiento1 = Math.round((valor1/24)*1.5);
-            FLU.innerHTML = 'x 1lts ' + Math.round((valor1/24)) + ' cc/hr';
+            FLU.innerHTML =  Math.round((valor1/24)) + ' cc/hr';
             MAN.innerHTML = 'm+m/2 ' + mantenimiento1 + ' cc/hr';
             FLU.style.display = 'block';
             MAN.style.display = 'block';
@@ -32,17 +33,21 @@ CALCULAR.addEventListener('click', () => {
             // Datos por 2litros de agua
             let valor2 = flujo * 2000
             let mantenimiento2 = Math.round((valor2/24)*1.5);
-            MOR.innerHTML = 'x 1lts   ' + Math.round((valor2/24)) + '   cc/hr';
+            MOR.innerHTML =  Math.round((valor2/24)) + '   cc/hr';
             MAR.innerHTML = 'm+m/2   ' + mantenimiento2 + '   cc/hr';
             MOR.style.display = 'block';
             MAR.style.display = 'block';
             //console.log(`VALORES  ${valor1} a ${valor2}`)
         } else {
+            // Metodo de HollyDay
             let mantenimiento = Math.round(flujo*1.5);
             FLU.innerHTML = flujo + ' cc/hr';
             MAN.innerHTML = 'm+m/2 ' + mantenimiento + ' cc/hr';
             FLU.style.display = 'block';
             MAN.style.display = 'block';
+            // debbuger
+            MOR.style.display = 'none';
+            MAR.style.display = 'none';
         };
     } else {
         ERROR.style.display = 'block';
@@ -52,7 +57,7 @@ CALCULAR.addEventListener('click', () => {
 });
 
 
-
+// Handler de apoyo
 function calculeHidrate ( kg ) {
     if (kg){
         if (kg <= 30) {
@@ -65,6 +70,7 @@ function calculeHidrate ( kg ) {
     }
 }
 
+// Funcion de la Superficie Corporal ((x * 4 + 7) / x + 90)
 function superficiecorporal(kg) {
     let c = parseInt(kg)
     console.log(c+90)
@@ -77,6 +83,7 @@ function superficiecorporal(kg) {
 
 
 //  ----------------------------------------------------------------
+// Funcion propia, método de HollyDay
 function hollydaySegar(kg) {
     // Parseando a entero para no tener problemas aritmeticos. (el value es una string.)
     let peso = parseInt(kg)
