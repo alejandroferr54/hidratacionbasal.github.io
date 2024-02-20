@@ -77,9 +77,9 @@ function superficiecorporal(kg) {
 
 
 //  ----------------------------------------------------------------
-function hollydaySegar(peso) {
+function hollydaySegar(kg) {
     // Parseando a entero para no tener problemas aritmeticos. (el value es una string.)
-    let peso = parseInt(peso)
+    let peso = parseInt(kg)
     //Defino el cálculo
     let cc = 0
     // Si el peso es mayor a veinte se ejecuta el código
